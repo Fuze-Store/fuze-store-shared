@@ -1,3 +1,4 @@
+import { SubscriptionStatus } from '../enums/subscription';
 import { Invoice } from './invoice';
 import { Plan } from './plan';
 
@@ -26,7 +27,7 @@ export type Subscription = {
   /**
    * Status of subscription
    */
-  status: 'ACTIVE' | 'PENDING' | 'CANCELED';
+  status: SubscriptionStatus;
   /**
    * Creation timestamp
    */

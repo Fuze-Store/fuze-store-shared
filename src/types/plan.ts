@@ -1,4 +1,4 @@
-import { Plan as PlanCode } from '../enums/plan.enum';
+import { PlanCode } from '../enums/plan';
 
 export type PlanFeatureValue = string | number | boolean;
 

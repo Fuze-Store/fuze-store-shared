@@ -6,7 +6,7 @@
  *
  */
 
-export enum Feature {
+export enum PlanFeature {
   DASHBOARD = 'dashboard',
   POS = 'pos',
   EVENT_BASIC = 'event_basic', // List View
@@ -39,7 +39,7 @@ export enum Feature {
   AI_AGENT = 'ai_agent', // TODO=
 }
 
-export enum Plan {
+export enum PlanCode {
   FREETRIAL = 'FREETRIAL',
   STARTER = 'STARTER',
   BASIC = 'BASIC',

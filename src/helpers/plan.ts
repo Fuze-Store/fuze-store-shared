@@ -6,7 +6,7 @@
  *
  */
 
-import { Feature, Plan as SubscriptionPlan } from '../enums/plan.enum';
+import { PlanCode, PlanFeature } from '../enums/plan';
 import { Plan, PlanFeatureValue } from '../types/plan';
 
 /**
@@ -67,16 +67,13 @@ export const featureLabels: Record<string, string> = {
  * @returns An object mapping feature keys to their unique values for the target plan.
  * @throws If the plan code is invalid or the plan is not found in the provided plans array.
  */
-export function getUniqueFeaturesByPlan(
-  planCode: SubscriptionPlan,
-  plans: Plan[],
-) {
+export function getUniqueFeaturesByPlan(planCode: PlanCode, plans: Plan[]) {
   const hierarchy = [
-    SubscriptionPlan.FREETRIAL,
-    SubscriptionPlan.BASIC,
-    SubscriptionPlan.STARTER,
-    SubscriptionPlan.STANDARD,
-    SubscriptionPlan.PREMIUM,
+    PlanCode.FREETRIAL,
+    PlanCode.BASIC,
+    PlanCode.STARTER,
+    PlanCode.STANDARD,
+    PlanCode.PREMIUM,
   ];
   const targetIndex = hierarchy.indexOf(planCode);
   if (targetIndex === -1) throw new Error('Invalid plan code');
@@ -118,10 +115,7 @@ export function getUniqueFeaturesByPlan(
  * @param plans - An array of available plans to search for unique features.
  * @returns An array of strings representing the names of unique features for the specified plan.
  */
-export function getUniqueKeyFeaturesByPlan(
-  planCode: SubscriptionPlan,
-  plans: Plan[],
-) {
+export function getUniqueKeyFeaturesByPlan(planCode: PlanCode, plans: Plan[]) {
   const uniqueFeatures = getUniqueFeaturesByPlan(planCode, plans);
   return Object.keys(uniqueFeatures);
 }
@@ -141,7 +135,7 @@ export function getUniqueKeyFeaturesByPlan(
 export function getDifferentFeaturesValues(
   plans: Plan[],
 ): Record<string, Record<string, PlanFeatureValue>> {
-  const targetPlan = plans.find((p) => p.code === SubscriptionPlan.PREMIUM);
+  const targetPlan = plans.find((p) => p.code === PlanCode.PREMIUM);
   if (!targetPlan) return {};
 
   const differentFeatures: Record<
@@ -186,50 +180,50 @@ export function getFeatureValue(value: PlanFeatureValue, feature: string) {
       maximumFractionDigits: 0,
     }).format(value);
 
-    if (feature === Feature.POS) {
+    if (feature === PlanFeature.POS) {
       return `${formattedValue} orders per month`;
     }
 
-    if (feature === Feature.AREA) {
+    if (feature === PlanFeature.AREA) {
       return `${formattedValue} area(s)`;
     }
 
     if (
-      feature === Feature.TRANSACTIONS ||
-      feature === Feature.ORDER_HISTORIES
+      feature === PlanFeature.TRANSACTIONS ||
+      feature === PlanFeature.ORDER_HISTORIES
     ) {
       return `up to last ${formattedValue} month(s)`;
     }
 
-    if (feature === Feature.CATALOGS) {
+    if (feature === PlanFeature.CATALOGS) {
       return `${formattedValue} products / services`;
     }
 
-    if (feature === Feature.STAFFS) {
+    if (feature === PlanFeature.STAFFS) {
       return `${formattedValue} staff(s)`;
     }
 
-    if (feature === Feature.CUSTOMERS) {
+    if (feature === PlanFeature.CUSTOMERS) {
       return `${formattedValue} saved customer(s)`;
     }
 
-    if (feature === Feature.STORE_LIMIT) {
+    if (feature === PlanFeature.STORE_LIMIT) {
       return `up to ${formattedValue} store(s)`;
     }
   }
 
   if (
-    (feature === Feature.STORE_LIMIT ||
-      feature === Feature.EVENT_ADVANCED ||
-      feature === Feature.STAFFS ||
-      feature === Feature.UNIT ||
-      feature === Feature.POS ||
-      feature === Feature.TRANSACTIONS ||
-      feature === Feature.CATALOGS ||
-      feature === Feature.CUSTOMERS ||
-      feature === Feature.SMS_NOTIFICATIONS ||
-      feature === Feature.AI_AGENT ||
-      feature === Feature.AREA) &&
+    (feature === PlanFeature.STORE_LIMIT ||
+      feature === PlanFeature.EVENT_ADVANCED ||
+      feature === PlanFeature.STAFFS ||
+      feature === PlanFeature.UNIT ||
+      feature === PlanFeature.POS ||
+      feature === PlanFeature.TRANSACTIONS ||
+      feature === PlanFeature.CATALOGS ||
+      feature === PlanFeature.CUSTOMERS ||
+      feature === PlanFeature.SMS_NOTIFICATIONS ||
+      feature === PlanFeature.AI_AGENT ||
+      feature === PlanFeature.AREA) &&
     value === true
   ) {
     return 'Unlimited';

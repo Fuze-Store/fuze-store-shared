@@ -1,11 +1,14 @@
 // Named exports
-export * from './date.helper';
+export * from './date';
+export * from './plan';
 
 // Default export object
-import * as dateHelper from './date.helper';
+import * as dateHelper from './date';
+import * as planHelper from './plan';
 
-const helper = {
+const helpers = {
   ...dateHelper,
+  ...planHelper,
 };
 
-export default helper;
+export default helpers;
