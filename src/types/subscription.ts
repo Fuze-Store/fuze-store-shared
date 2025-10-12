@@ -1,4 +1,7 @@
 import { SubscriptionStatus } from '../enums/subscription';
+import { AdyenSessionResponse } from './adyen';
+import { ApiSuccessResponse } from './common';
+import { CouponRedemption } from './coupon';
 import { Invoice } from './invoice';
 import { Plan } from './plan';
 
@@ -52,8 +55,26 @@ export type Subscription = {
    * list of subscription invoices
    */
   invoices?: Invoice[];
-  //   /**
-  //    * list of active coupon redemptions
-  //    */
-  //   activeRedemptions?: CouponRedemption[];
+  /**
+   * list of active coupon redemptions
+   */
+  activeRedemptions?: CouponRedemption[];
+};
+
+export type SubscriptionCreateSessionPayload = {
+  returnUrl: string;
+  paymentMethodId?: string;
+  planId: string;
+};
+
+export type AccountSubscriptionCreateSessionResponse = ApiSuccessResponse & {
+  data:
+    | {
+        changeType: 'session';
+        data: AdyenSessionResponse;
+      }
+    | {
+        changeType: 'upgrade' | 'downgrade';
+        data: Subscription;
+      };
 };
