@@ -1,5 +1,6 @@
+import { Plan as PlanCode } from '../enums/plan.enum';
 
-export type PlanCode = 'FREE' | 'BASIC' | 'STARTER' | 'STANDARD' |'PREMIUM';
+export type PlanFeatureValue = string | number | boolean;
 
 export type Plan = {
   id: string;
@@ -10,5 +11,5 @@ export type Plan = {
   commissionRate: number;
   currency: string;
   code: PlanCode;
-  features: Record<string, string|number|boolean>;
+  features: Record<string, PlanFeatureValue>;
 };

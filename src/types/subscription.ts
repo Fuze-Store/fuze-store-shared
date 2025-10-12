@@ -51,8 +51,8 @@ export type Subscription = {
    * list of subscription invoices
    */
   invoices?: Invoice[];
-//   /**
-//    * list of active coupon redemptions
-//    */
-//   activeRedemptions?: CouponRedemption[];
+  //   /**
+  //    * list of active coupon redemptions
+  //    */
+  //   activeRedemptions?: CouponRedemption[];
 };
