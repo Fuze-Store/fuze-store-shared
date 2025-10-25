@@ -29,14 +29,13 @@ export enum PlanFeature {
   REPORTS_ADVANCED = 'reports_advanced', // View, Download Reports
   EXPENSES = 'expenses',
   DISCOUNTS_BASIC = 'discounts_basic', // Basic Discounts
-  DISCOUNTS_ADVANCED = 'discounts_advanced', // Basic with Schedules
   STORE_SESSION = 'store_session', // Store Session Management
   EMAIL_NOTIFICATIONS = 'email_notifications', // Email Notifications
-  SMS_NOTIFICATIONS = 'sms_notifications', // TODO=
+  // SMS_NOTIFICATIONS = 'sms_notifications', // TODO=
   PRINTER = 'printer',
   STORE_LIMIT = 'store_limit',
   WAITING_LIST = 'waiting_list',
-  AI_AGENT = 'ai_agent', // TODO=
+  // AI_AGENT = 'ai_agent', // TODO=
 }
 
 export enum PlanCode {
