@@ -45,12 +45,11 @@ export const featureLabels: Record<string, string> = {
   reports_basic: 'Basic Reports',
   reports_advanced: 'Advanced Reports',
   discounts_basic: 'Basic Discounts',
-  discounts_advanced: 'Advanced Discounts',
   store_session: 'Store Session',
   email_notifications: 'Email Notifications',
-  sms_notifications: 'SMS Notifications',
+  // sms_notifications: 'SMS Notifications',
   printer: 'Printer Integration',
-  ai_agent: 'AI Assistant',
+  // ai_agent: 'AI Assistant',
   store_limit: 'Store Limit',
   realtime_sync: 'Real-time Sync',
 };
@@ -221,8 +220,8 @@ export function getFeatureValue(value: PlanFeatureValue, feature: string) {
       feature === PlanFeature.TRANSACTIONS ||
       feature === PlanFeature.CATALOGS ||
       feature === PlanFeature.CUSTOMERS ||
-      feature === PlanFeature.SMS_NOTIFICATIONS ||
-      feature === PlanFeature.AI_AGENT ||
+      // feature === PlanFeature.SMS_NOTIFICATIONS ||
+      // feature === PlanFeature.AI_AGENT ||
       feature === PlanFeature.AREA) &&
     value === true
   ) {
